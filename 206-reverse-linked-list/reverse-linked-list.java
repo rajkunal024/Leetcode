@@ -18,6 +18,6 @@ class Solution {
             prev = current;
             current = nextNode;
         }
-        return prev; // New head of the reversed list
+        return prev;
     }
 }
