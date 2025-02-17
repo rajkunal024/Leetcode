@@ -2,20 +2,23 @@ import java.util.*;
 
 class Solution {
     public int[] intersect(int[] nums1, int[] nums2) {
-        Map<Integer, Integer> freq = new HashMap<>();
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+
+        int i = 0, j = 0;
         List<Integer> result = new ArrayList<>();
 
-        for (int num : nums1) {
-            freq.put(num, freq.getOrDefault(num, 0) + 1);
-        }
-
-        for (int num : nums2) {
-            if (freq.getOrDefault(num, 0) > 0) {
-                result.add(num);
-                freq.put(num, freq.get(num) - 1);
+        while (i < nums1.length && j < nums2.length) {
+            if (nums1[i] == nums2[j]) {
+                result.add(nums1[i]);
+                i++; j++;
+            } else if (nums1[i] < nums2[j]) {
+                i++;
+            } else {
+                j++;
             }
         }
 
-        return result.stream().mapToInt(i -> i).toArray();
+        return result.stream().mapToInt(k -> k).toArray();
     }
 }
