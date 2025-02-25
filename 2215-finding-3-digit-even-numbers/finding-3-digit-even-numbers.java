@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 class Solution {
     public int[] findEvenNumbers(int[] digits) {
-        int[] freq = new int[10]; // Count occurrences of each digit
+        int[] freq = new int[10];
         
         for (int digit : digits) freq[digit]++;
 
