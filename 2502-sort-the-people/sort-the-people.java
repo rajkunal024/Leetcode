@@ -1,18 +1,19 @@
+import java.util.*;
+
 class Solution {
     public String[] sortPeople(String[] names, int[] heights) {
-        int n = names.length;
+        Map<Integer, String> map = new HashMap<>();
 
-        int[][] combined = new int[n][2];
-        for (int i = 0; i < n; i++) {
-            combined[i][0] = heights[i];
-            combined[i][1] = i;
+        for (int i = 0; i < names.length; i++) {
+            map.put(heights[i], names[i]);
         }
 
-        Arrays.sort(combined, (a, b) -> b[0] - a[0]);
-
+        Arrays.sort(heights);
+        int n = heights.length;
         String[] result = new String[n];
-        for (int i = 0; i < n; i++) {
-            result[i] = names[combined[i][1]];
+
+        for (int i = n - 1, j = 0; i >= 0; i--, j++) {
+            result[j] = map.get(heights[i]);
         }
 
         return result;
