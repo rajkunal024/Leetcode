@@ -27,17 +27,23 @@
 
 class Solution {
     public int[] findErrorNums(int[] nums) {
-        int[] freq = new int[nums.length + 1]; // index 1 to n
-        for (int num : nums) {
-            freq[num]++;
+
+        int n = nums.length;
+
+        int[] counter = new int[n + 1];
+        int[] ans = new int[2];
+
+        for (int i = 0; i < n; i++) {
+            ans[1] ^= (i + 1) ^ nums[i];
+
+            if (++counter[nums[i]] == 2) {
+                ans[0] = nums[i];
+            }
         }
 
-        int[] result = new int[2]; // [duplicate, missing]
-        for (int i = 1; i <= nums.length; i++) {
-            if (freq[i] == 0) result[1] = i;     // missing
-            else if (freq[i] == 2) result[0] = i; // duplicate
-        }
+        ans[1] ^= ans[0]; 
 
-        return result;
+        return ans;
+
     }
 }
