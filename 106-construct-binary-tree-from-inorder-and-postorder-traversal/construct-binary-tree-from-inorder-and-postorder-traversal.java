@@ -16,13 +16,12 @@
 import java.util.HashMap;
 
 class Solution {
-    private int postIndex;  // Tracks the current root in postorder array
-    private HashMap<Integer, Integer> inorderMap = new HashMap<>(); // Stores inorder indices
+    private int postIndex; 
+    private HashMap<Integer, Integer> inorderMap = new HashMap<>(); 
 
     public TreeNode buildTree(int[] inorder, int[] postorder) {
-        postIndex = postorder.length - 1; // Start from the last element of postorder
-        
-        // Store indices of inorder elements for quick lookup
+        postIndex = postorder.length - 1; 
+
         for (int i = 0; i < inorder.length; i++) {
             inorderMap.put(inorder[i], i);
         }
