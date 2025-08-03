@@ -6,5 +6,4 @@ class Solution {
 
         return isPowerOfThree(n/3);
     }
-
 }
